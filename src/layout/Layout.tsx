@@ -42,7 +42,9 @@ const Layout = () => {
 					<span className="pt-[13px] pr-[14px] pb-[14px]">Выйти</span>
 				</Button>
 			</div>
-			<Outlet />
+			<div className="w-full px-16 py-10">
+				<Outlet />
+			</div>
 		</div>
 	);
 };
