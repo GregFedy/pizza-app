@@ -15,11 +15,21 @@ const Layout = () => {
 					<div className="text-[#9EA1B1] text-sm">gregory@gmail.com</div>
 				</div>
 				<div className="flex flex-col gap-8">
-					<NavLink className="flex items-center gap-4" to="/">
+					<NavLink
+						className={({ isActive }) =>
+							`flex items-center gap-4 ${isActive ? 'text-orange' : ''}`
+						}
+						to="/"
+					>
 						<img src="/menu-icon.svg" alt="Menu icon" />
 						Меню
 					</NavLink>
-					<NavLink className="flex items-center gap-4" to="/cart">
+					<NavLink
+						className={({ isActive }) =>
+							`flex items-center gap-4 ${isActive ? 'text-orange' : ''}`
+						}
+						to="/cart"
+					>
 						<img src="/cart-icon.svg" alt="Cart icon" />
 						Корзина
 					</NavLink>

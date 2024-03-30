@@ -9,7 +9,3 @@
     font-family: 'Open Sans', sans-serif;
   }
 }
-
-.active {
-  @apply text-orange;
-}
