@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Suspense, lazy } from 'react';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, defer } from 'react-router-dom';
 import ProductInfo from './components/ProductInfo/ProductInfo';
 import { API_PREFIX } from './helpers/API';
 import Layout from './layout/Layout';
@@ -31,10 +31,16 @@ const router = createBrowserRouter([
 				element: <ProductInfo />,
 				errorElement: <h2 className="text-xl">Ошибка в загрузке данных</h2>,
 				loader: async ({ params }) => {
-					const { data } = await axios.get<Product>(
-						`${API_PREFIX}/products/${params.id}`,
-					);
-					return data;
+					return defer({
+						data: new Promise((resolve, reject) => {
+							setTimeout(() => {
+								axios
+									.get<Product>(`${API_PREFIX}/products/${params.id}`)
+									.then((data) => resolve(data))
+									.catch((error) => reject(error));
+							}, 1000);
+						}),
+					});
 				},
 			},
 		],
