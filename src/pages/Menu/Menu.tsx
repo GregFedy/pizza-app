@@ -15,7 +15,7 @@ const Menu = () => {
 		try {
 			setIsLoading(true);
 			await new Promise<void>((resolve) => {
-				setTimeout(resolve, 2000);
+				setTimeout(resolve, 1000);
 			});
 			const { data } = await axios.get<Product[]>(`${API_PREFIX}/products`);
 			setProducts(data);
