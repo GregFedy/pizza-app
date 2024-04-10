@@ -1,8 +1,9 @@
-import { useParams } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
+import type { Product } from '../../types/product.type';
 
 const ProductInfo = () => {
-	console.log(useParams());
-	const { id } = useParams();
-	return <div>ProductInfo {id}</div>;
+	const data = useLoaderData() as Product;
+
+	return <div>ProductInfo - {data.name}</div>;
 };
 export default ProductInfo;
