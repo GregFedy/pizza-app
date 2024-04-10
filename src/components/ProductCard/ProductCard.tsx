@@ -14,7 +14,7 @@ const ProductCard = (props: ProductCardProps) => {
 		<Link to={`/product/${props.id}`}>
 			<div className="w-80 border-white drop-shadow-[18px_18px_36px_rgba(211,209,216,0.25)]">
 				<div
-					className="relative mb-1 min-h-40 rounded-2xl"
+					className="relative mb-1 min-h-40 rounded-2xl bg-cover"
 					style={{
 						backgroundImage: `url(http://localhost:4000/pizza-api-v1/${props.image}`,
 					}}
