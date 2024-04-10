@@ -6,17 +6,21 @@ type MenuListProps = {
 };
 
 const MenuList = ({ products }: MenuListProps) => {
-	return products.map((product) => (
-		<ProductCard
-			id={product.id}
-			title={product.name}
-			description={product.ingredients}
-			price={product.price}
-			image={product.image}
-			rating={product.rating}
-			key={product.id}
-		/>
-	));
+	return (
+		<div className="flex flex-wrap gap-x-11 gap-y-8">
+			{products.map((product) => (
+				<ProductCard
+					id={product.id}
+					title={product.name}
+					description={product.ingredients}
+					price={product.price}
+					image={product.image}
+					rating={product.rating}
+					key={product.id}
+				/>
+			))}
+		</div>
+	);
 };
 
 export default MenuList;
