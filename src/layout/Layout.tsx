@@ -1,7 +1,12 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import Button from '../components/ui/Button';
 
 const Layout = () => {
+	const navigate = useNavigate();
+	const logout = () => {
+		localStorage.removeItem('jwt');
+		navigate('/auth/login');
+	};
 	return (
 		<div className="flex">
 			<div className="flex min-h-screen flex-col border-[#D4D6E0] border-r p-8">
@@ -37,6 +42,7 @@ const Layout = () => {
 				<Button
 					size="small"
 					className="mt-auto flex h-[43px] w-[117px] items-center justify-center gap-[9px] rounded-[28px] bg-orange font-normal text-[15px] text-white leading-4 hover:bg-orange-dark"
+					onClick={logout}
 				>
 					<img src="/exit-icon.svg" alt="Exit button" />
 					<span className="pt-[13px] pr-[14px] pb-[14px]">Выйти</span>
