@@ -5,6 +5,8 @@ import Button from '../../components/ui/Button';
 import Heading from '../../components/ui/Heading';
 import Input from '../../components/ui/Input';
 import { API_PREFIX } from '../../helpers/API';
+import { useAppDispatch } from '../../hooks/useAppDispatch';
+import { addJwt } from '../../store/userSlice';
 import type { LoginResponse } from '../../types/auth.type';
 
 type LoginForm = {
@@ -15,6 +17,7 @@ type LoginForm = {
 const Login = () => {
 	const [error, setError] = useState<string | null>(null);
 	const navigate = useNavigate();
+	const dispatch = useAppDispatch();
 	const onSubmitHandler = async (event: FormEvent) => {
 		event.preventDefault();
 		setError(null);
@@ -32,8 +35,7 @@ const Login = () => {
 					password,
 				},
 			);
-			console.log(data);
-			localStorage.setItem('jwt', data.access_token);
+			dispatch(addJwt(data.access_token));
 			navigate('/');
 		} catch (error) {
 			console.log(error);
